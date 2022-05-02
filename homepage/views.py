@@ -3,7 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from collections.abc import Iterable
 from django.shortcuts import render, redirect
 from django.db.models.signals import post_save
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from typing import List
 from django.contrib import messages
 from django.dispatch import receiver
@@ -56,6 +56,10 @@ class ProjectsListView(PermissionRequiredMixin, PermissionListMixin, ListView):
                     perms=self.get_object_permission(self.request),
                     klass=queryset,
                     **self.get_objects_for_user_extra_kwargs)
+
+
+class ProjectDetailView(DetailView):
+    model = models.Project
 
 
 def list(request: HttpRequest) -> HttpResponse:
