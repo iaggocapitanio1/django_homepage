@@ -1,0 +1,174 @@
+{% load static %}
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light side" style="width: 300px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <img src="{% static 'img/compig-2.png' %}" width="auto" height="48px" style="padding: 5px;">
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            {% if request.path == '/home/'%}
+            <a href="{% url 'pages:home' %}" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home" /></svg>
+                Home
+            </a>
+            {% else %}
+            <a href="{% url 'pages:home' %}" class="nav-link" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home" /></svg>
+                Home
+            </a>
+            {% endif %}
+        </li>
+        {% if request.user.role != user.Roles.STAFF %}
+        <li>
+            {% if request.path == '/user/users/' %}
+            <a href="{% url 'user:users' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#users" /></svg>
+                Usuários
+            </a>
+            {% else %}
+            <a href="{% url 'user:users' %}" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#users" /></svg>
+                Usuários
+            </a>
+            {% endif %}
+        </li>
+        {% endif %}
+        <li>
+            {% if request.path == '/dashboard/' %}
+            <a href="{% url 'pages:dashboard' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#speedometer2" /></svg>
+                Dashboard
+            </a>
+            {% else %}
+            <a href="{% url 'pages:dashboard' %}" class="nav-link" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#speedometer2" /></svg>
+                Dashboard
+            </a>
+            {% endif %}
+        </li>
+
+
+        <li>
+            {% if '/load/loadings/' in request.path  %}
+            <a href="{% url 'load:loadings' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#truck" /></svg>
+                Carregamentos
+            </a>
+            {% else %}
+            <a href="{% url 'load:loadings' %}" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#truck" /></svg>
+                Carregamentos
+            </a>
+            {% endif %}
+        </li>
+
+        <li>
+            {% if '/load/producers/' in request.path or  '/load/producer/'  in request.path %}
+            <a href="{% url 'load:producers' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#farm" /></svg>
+                Produtores
+            </a>
+            {% else %}
+            <a href="{% url 'load:producers' %}" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#farm" /></svg>
+                Produtores
+            </a>
+            {% endif %}
+        </li>
+        <li>
+            {% if  '/load/trucks/' in request.path  or '/load/truck/' in request.path %}
+            <a href="{% url 'load:trucks' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#truck_adm" /></svg>
+                Caminhões
+            </a>
+            {% else %}
+            <a href="{% url 'load:trucks' %}" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#truck_adm" /></svg>
+                Caminhões
+            </a>
+            {% endif %}
+        </li>
+        <li>
+            {% if '/user/units/' in request.path  or '/user/unit/' in request.path  %}
+            <a href="{% url 'user:units' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#industry" /></svg>
+                Unidades
+            </a>
+            {% else %}
+            <a href="{% url 'user:units' %}" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#industry" /></svg>
+                Unidades
+            </a>
+            {% endif %}
+        </li>
+
+        <li>
+            {% if '/load/operators/' in request.path or '/load/operator/' in request.path %}
+            <a href="{% url 'load:operators' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#operator" /></svg>
+                Operadores
+            </a>
+            {% else %}
+            <a href="{% url 'load:operators' %}" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#operator" /></svg>
+                Operadores
+            </a>
+            {% endif %}
+        </li>
+        <li>
+            {% if '/load/truck-drivers/' in request.path  or '/load/truck-driver/' in request.path %}
+            <a href="{% url 'load:truck-drivers' %}" class="nav-link active">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#driver" /></svg>
+                Motoristas
+            </a>
+            {% else %}
+            <a href="{% url 'load:truck-drivers' %}" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#driver" /></svg>
+                Motoristas
+            </a>
+            {% endif %}
+        </li>
+
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {% if request.user.picture %}
+            <img src="{{ request.user.picture.url }}" alt="Foto" width="auto" height="32" class="rounded-circle me-2">
+            {% else %}
+            <svg class="bi me-2" width="32px" height="32px">
+                <use xlink:href="#people-circle" /></svg>
+            {% endif %}
+            <strong> {{user.username}} </strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="{% url 'pages:logout' %}">
+                    Logout
+                </a></li>
+        </ul>
+    </div>
+</div>

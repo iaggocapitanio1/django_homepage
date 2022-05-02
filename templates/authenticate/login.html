@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block header %}
+{% endblock %}
+{% block main %}
+<body class="text-center">
+    <main class="form-signin my-auto mx-auto">
+       <div class="container">
+           <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form class="form-signin" method="post">
+            {% csrf_token %}
+            <h1 class="text-center text-dark mt-5">ComPig</h1>
+                    <div class="text-center mb-5 text-dark">Insira seus dados para entrar na plataforma.</div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username" name="username"
+                    placeholder="name@example.com ou nome">
+                <label for="username">Usuário</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Senha">
+                <label for="password">Senha</label>
+            </div>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        </form>
+                </div>
+           </div>
+       </div>
+    </main>
+
+
+
+</body>
+
+{% endblock %}

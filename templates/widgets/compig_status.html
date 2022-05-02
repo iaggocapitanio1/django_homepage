@@ -1,0 +1,77 @@
+{% load static %}
+<div class="row">
+    <div class="col">
+        <div class="small-box bg-info">
+            <div class="inner">
+                {% if total_loads %}
+                    <h3>{{total_loads}}</h3>
+                {% else %}
+                <h3>0</h3>
+                {% endif %}
+                <p>Carregamentos</p>
+            </div>
+            <div class="icon">
+                <i class="material-icons">local_shipping</i>
+            </div>
+            <a href="{% url 'load:loadings' %}" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col">
+        <div class="small-box bg-warning">
+
+            {% if  total_pigs != None  %}
+            <div class="inner">
+                <h3>{{total_pigs}}</h3>
+                <p>Porcos contados</p>
+            </div>
+            {% else %}
+            <div class="inner">
+                <h3>0</h3>
+                <p>Porcos contados</p>
+            </div>
+            {% endif %}
+
+
+            <div class="icon">
+                <i class="material-icons">donut_large</i>
+            </div>
+            <a href="{% url 'pages:total-amount' %}" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col">
+        <div class="small-box bg-danger">
+            <div class="inner">
+                {% if number_of_users %}
+                <h3>{{ number_of_users}} </h3>
+                {% else %}
+                <h3>0</h3>
+                {% endif %}
+
+                <p>Usuários</p>
+            </div>
+            <div class="icon">
+                <i class="material-icons">people</i>
+            </div>
+            <a href="{% url 'user:users' %}" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col">
+        <div class="small-box bg-success">
+            <div class="inner">
+                {% if total_time %}
+                <h3>{{total_time}}</h3>
+                {% else %}
+                <h3>0</h3>
+                {% endif %}
+                <p>Tempo total (horas)</p>
+            </div>
+            <div class="icon">
+                <i class="material-icons">schedule</i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>

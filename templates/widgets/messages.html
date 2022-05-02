@@ -1,0 +1,9 @@
+{% if messages %}
+{% for message in messages %}
+    <div role="alert" {% if message.tags %} id="message" class="animate__animated animate__fadeInDown  {{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </div>
+{% endfor %}
+{% endif %} 
+

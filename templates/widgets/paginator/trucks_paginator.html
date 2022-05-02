@@ -1,0 +1,33 @@
+{% load define_action %}
+
+{% if page_obj %}
+
+{% define page_obj as paginator_trucks %}
+
+{% endif %}
+<br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if paginator_trucks.has_previous %}
+        <li class="page-item">
+            <a href="?page=1" class="page-link"> &laquo &laquo Primeira</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{paginator_trucks.previous_page_number}}"> &laquo Anterior</a>
+        </li>
+        {% endif %}
+        <li class="page-item disabled">
+            <a href="" class="page-link">
+                Página {{paginator_trucks.number }} de {{paginator_trucks.paginator.num_pages}}
+            </a>
+        </li>
+        {% if paginator_trucks.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{paginator_trucks.next_page_number}} "> Próxima &raquo</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{paginator_trucks.paginator.num_pages}}"> Última &raquo &raquo</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

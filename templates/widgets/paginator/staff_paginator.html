@@ -1,0 +1,33 @@
+{% load define_action %}
+
+{% if page_obj %}
+
+{% define page_obj as paginator_employees %}
+
+{% endif %}
+<br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if paginator_employees.has_previous %}
+        <li class="page-item">
+            <a href="?page=1" class="page-link"> &laquo &laquo Primeira</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{paginator_employees.previous_page_number}}"> &laquo Anterior</a>
+        </li>
+        {% endif %}
+        <li class="page-item disabled">
+            <a href="" class="page-link">
+                Página {{paginator_employees.number }} de {{paginator_employees.paginator.num_pages}}
+            </a>
+        </li>
+        {% if paginator_employees.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{paginator_employees.next_page_number}} "> Próxima &raquo</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{paginator_employees.paginator.num_pages}}"> Última &raquo &raquo</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
